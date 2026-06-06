@@ -38,6 +38,13 @@ export function Navigation() {
                     </li>
                 ))}
             </ul>
+            <div className="upcoming-container">
+                <span className="upcoming-title">NEXT UP</span>
+                <span className="upcoming-subtitle">This Friday · 7:30</span>
+            </div>
+            <div className="currentUser">
+
+            </div>
         </nav>
     )
 }
