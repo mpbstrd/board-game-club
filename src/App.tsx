@@ -14,7 +14,7 @@ function App() {
 
   return (
     <AppContext.Provider value={{ currentUser, upcomingEvent }}>
-      <div className="bg-[var(--bg)] flex flex-row items-start h-screen">
+      <div className="bg-[var(--bg)] flex flex-row items-start">
         <Navigation/>
         {/* <div className="flex-1 w-screen overflow-y-auto"> */}
           <Routes>
