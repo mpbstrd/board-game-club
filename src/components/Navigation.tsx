@@ -1,28 +1,11 @@
-import React from 'react'
 import { HomeIcon, LibraryIcon, CollectionIcon, LeaderboardIcon, SessionsIcon, ScheduleIcon, BrandMarkIcon } from '../assets/icons'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { useAppContext } from '../context/AppContext'
 
 type NavItem = {
     to: string,
     icon: React.FC<{ className?: string }>,
     label: string
-}
-
-export type CurrentUser = {
-    name: string,
-    sessionsPlayed: number,
-    playedGames: number,
-    avatarUrl: string
-}
-
-export type UpcomingEvent = {
-    weekday: string,
-    time: string
-}
-
-type NavigationProps = {
-    currentUser: CurrentUser,
-    upcomingEvent: UpcomingEvent
 }
 
 const navItems: NavItem[] = [
@@ -34,9 +17,11 @@ const navItems: NavItem[] = [
     { to: '/schedule', icon: ScheduleIcon, label: 'Schedule' },
 ]
 
-export function Navigation({ currentUser, upcomingEvent }: NavigationProps) {
+export function Navigation() {
+    const { currentUser, upcomingEvent } = useAppContext()
+
     return (
-        <nav className="flex flex-col items-stretch w-[252px] h-screen p-4 sticky top-0 bg-[var(--bg-2)] border-r border-[var(--border-soft)]">
+        <nav className="flex flex-col items-stretch w-[252px] shrink-0 h-screen p-4 sticky top-0 bg-[var(--bg-2)] border-r border-[var(--border-soft)]">
 
             {/* Brand */}
             <div className="flex items-center gap-3 pt-5 pr-[30px] pb-[14px] pl-[10px]">
@@ -50,13 +35,17 @@ export function Navigation({ currentUser, upcomingEvent }: NavigationProps) {
             </div>
 
             {/* Nav items */}
-            <ul className="list-none p-0 mt-2">
+            <ul className="list-none p-0 mx-2">
                 {navItems.map((item) => (
-                    <li key={item.to}>
-                        <Link to={item.to} className="flex items-center w-full h-11 no-underline text-[var(--text-3)] px-0.5">
-                            <item.icon className="w-5 h-5 mr-3 shrink-0 text-[var(--text-3)]" />
-                            {item.label}
-                        </Link>
+                    <li key={item.to} className="mb-1 last:mb-0">
+                        <NavLink to={item.to}>
+                            {({ isActive }) => (
+                                <span className={`flex items-center w-full h-11 no-underline px-0.5 rounded-lg transition-colors ${isActive ? 'bg-[var(--streak)]/16 text-[var(--text-1)]' : 'text-[var(--text-3)] hover:bg-white hover:text-[var(--text-1)]'}`}>
+                                    <item.icon className={`w-5 h-5 m-3 shrink-0 ${isActive ? 'text-[var(--accent)]' : ''}`} />
+                                    {item.label}
+                                </span>
+                            )}
+                        </NavLink>
                     </li>
                 ))}
             </ul>

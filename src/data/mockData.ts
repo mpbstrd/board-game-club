@@ -1,4 +1,4 @@
-import type { CurrentUser, UpcomingEvent } from '../components/Navigation'
+import type { CurrentUser, UpcomingEvent } from '../types/index'
 
 export const currentUser: CurrentUser = {
     name: 'Perry',
@@ -9,5 +9,7 @@ export const currentUser: CurrentUser = {
 
 export const upcomingEvent: UpcomingEvent = {
     weekday: 'Friday',
-    time: '7:30 PM'
+    date: new Date('2024-06-28'),
+    time: '7:30 PM',
+    venue: 'Camia'
 }
