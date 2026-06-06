@@ -1,6 +1,7 @@
 import { HomeIcon, LibraryIcon, CollectionIcon, LeaderboardIcon, SessionsIcon, ScheduleIcon, BrandMarkIcon } from '../assets/icons'
 import { NavLink } from 'react-router-dom'
 import { useAppContext } from '../context/AppContext'
+import { X } from 'lucide-react'
 
 type NavItem = {
     to: string,
@@ -17,14 +18,35 @@ const navItems: NavItem[] = [
     { to: '/schedule', icon: ScheduleIcon, label: 'Schedule' },
 ]
 
-export function Navigation() {
+type NavigationProps = {
+    isOpen: boolean
+    onClose: () => void
+}
+
+export function Navigation({ isOpen, onClose }: NavigationProps) {
     const { currentUser, upcomingEvent } = useAppContext()
 
     return (
-        <nav className="flex flex-col items-stretch w-[252px] shrink-0 h-screen p-4 sticky top-0 bg-[var(--bg-2)] border-r border-[var(--border-soft)]">
+        <nav className={`
+            flex flex-col items-stretch w-[252px] shrink-0 h-screen p-4 overflow-y-auto
+            fixed top-0 left-0 z-50
+            lg:sticky
+            bg-[var(--bg-2)] border-r border-[var(--border-soft)]
+            transition-transform duration-300 ease-in-out
+            ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        `}>
+
+            {/* Close button — mobile only */}
+            <button
+                className="lg:hidden self-end p-2 mb-1 rounded-lg text-[var(--text-3)] hover:bg-[var(--surface)] hover:text-[var(--text-1)] transition-colors"
+                onClick={onClose}
+                aria-label="Close menu"
+            >
+                <X size={20} />
+            </button>
 
             {/* Brand */}
-            <div className="flex items-center gap-3 pt-5 pr-[30px] pb-[14px] pl-[10px]">
+            <div className="flex items-center gap-3 pt-3 lg:pt-5 pr-[30px] pb-[14px] pl-[10px]">
                 <div className="w-10 h-10 rounded-[10px] bg-[var(--accent)] flex items-center justify-center shrink-0">
                     <BrandMarkIcon size={22} />
                 </div>
@@ -38,7 +60,7 @@ export function Navigation() {
             <ul className="list-none p-0 mx-2">
                 {navItems.map((item) => (
                     <li key={item.to} className="mb-1 last:mb-0">
-                        <NavLink to={item.to}>
+                        <NavLink to={item.to} onClick={onClose}>
                             {({ isActive }) => (
                                 <span className={`flex items-center w-full h-11 no-underline px-0.5 rounded-lg transition-colors ${isActive ? 'bg-[var(--streak)]/16 text-[var(--text-1)]' : 'text-[var(--text-3)] hover:bg-white hover:text-[var(--text-1)]'}`}>
                                     <item.icon className={`w-5 h-5 m-3 shrink-0 ${isActive ? 'text-[var(--accent)]' : ''}`} />
