@@ -1,9 +1,11 @@
 import { createContext, useContext } from 'react'
-import { type CurrentUser, type UpcomingEvent } from '../types/index'
+import { type CurrentUser, type UpcomingEvent, type Member } from '../types/index'
 
 type AppContextType = {
     currentUser: CurrentUser
+    currentMember: Member
     upcomingEvent: UpcomingEvent
+    members: Member[]
 }
 
 const AppContext = createContext<AppContextType | null>(null)

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Navigation } from './components/Navigation'
-import { currentUser, upcomingEvent } from './data/mockData'
+import { currentUser, upcomingEvent, members } from './data/mockData'
 import AppContext from './context/AppContext'
 import Dashboard from './components/Dashboard'
 import Library from './components/Library'
@@ -14,9 +14,10 @@ import './App.css'
 
 function App() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const currentMember = members.find(m => m.id === currentUser.id)!
 
   return (
-    <AppContext.Provider value={{ currentUser, upcomingEvent }}>
+    <AppContext.Provider value={{ currentUser, currentMember, upcomingEvent, members }}>
       <div className="bg-[var(--bg)] overflow-x-hidden">
 
         {/* Mobile top bar */}

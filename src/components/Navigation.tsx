@@ -2,6 +2,7 @@ import { HomeIcon, LibraryIcon, CollectionIcon, LeaderboardIcon, SessionsIcon, S
 import { NavLink } from 'react-router-dom'
 import { useAppContext } from '../context/AppContext'
 import { X } from 'lucide-react'
+import { currentUser } from '../data/mockData'
 
 type NavItem = {
     to: string,
@@ -24,8 +25,9 @@ type NavigationProps = {
 }
 
 export function Navigation({ isOpen, onClose }: NavigationProps) {
-    const { currentUser, upcomingEvent } = useAppContext()
+    const { currentMember, upcomingEvent } = useAppContext()
 
+    
     return (
         <nav className={`
             flex flex-col items-stretch w-[252px] shrink-0 h-screen p-4 overflow-y-auto
@@ -74,18 +76,18 @@ export function Navigation({ isOpen, onClose }: NavigationProps) {
 
             {/* Upcoming */}
             <div className="mt-auto border border-[var(--border)] rounded-[13px] bg-[var(--surface)] flex flex-col gap-0.5 px-2 py-1">
-                <span className="[font-family:var(--mono)] text-[11px] font-medium text-[var(--text-3)] leading-none p-3">NEXT UP</span>
+                <span className="[font-family:var(--mono)] text-[11px] font-medium text-[var(--text-3)] leading-none p-3">UP NEXT</span>
                 <span className="[font-family:var(--heading)] text-base text-[var(--text-1)] leading-none px-3 pb-3">This {upcomingEvent.weekday} · {upcomingEvent.time}</span>
             </div>
 
             {/* User */}
             <div className="flex items-center gap-3 pt-3">
                 <div className="w-10 h-10 shrink-0">
-                    <img className="w-full h-full rounded-full object-cover object-center ring-1 ring-white" src={currentUser.avatarUrl} alt={currentUser.name} />
+                    <img className="w-full h-full rounded-full object-cover object-center ring-1 ring-white" src={currentMember.avatarUrl} alt={currentMember.name} />
                 </div>
                 <div>
-                    <div className="text-sm font-medium text-[var(--text-1)]">{currentUser.name}</div>
-                    <div className="text-xs text-[var(--text-3)]">{currentUser.sessionsPlayed} sessions · {currentUser.playedGames} games</div>
+                    <div className="text-sm font-medium text-[var(--text-1)]">{currentMember.name}</div>
+                    <div className="text-xs text-[var(--text-3)]">{currentMember.sessionsPlayed} sessions · {currentMember.playedGames} games</div>
                 </div>
             </div>
 
