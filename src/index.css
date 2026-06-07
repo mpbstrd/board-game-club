@@ -1,111 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --sans: 'Hanken Grotesk', sans-serif;
+  --heading: 'Newsreader', serif;
+  --mono: 'Space Mono', monospace;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* ── Light theme (default) ── */
+  --bg: #f6f3ec;          /* app, background  */
+  --bg-2: #efebe3;        /* sidebar, insets  */
+  --surface: #fdfbf8;     /* cards            */
+  --surface-2: #efeae1;   /* chips, tracks    */
+  --border: #ddd7cd;      /* borders          */
+  --border-soft: #e6e1d9; /* subtle dividers  */
+  --text-1: #2a3039;      /* headings         */
+  --text-2: #565d69;      /* body             */
+  --text-3: #7d838d;      /* muted/labels     */
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* ── Accent (amber "lamplight" — tweakable) ── */
+  --accent: #E8A33D;            /* default        */
+  --accent-terracotta: #E2725B;
+  --accent-sage: #5FA98C;
+  --accent-periwinkle: #7C8BD0;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* ── Semantic status ── */
+  --in-text: #6ed2a4;     --in-fill: rgba(110, 210, 164, .2);   /* in / available / open */
+  --maybe-text: #dcc06a;  --maybe-fill: rgba(220, 192, 106, .2);/* maybe / leading       */
+  --out-text: #e89b87;    --out-fill: rgba(232, 155, 135, .2);  /* can't / out           */
+  --streak: #d99a5e;      /* streak flame */
+
+  /* ── Category accents ── */
+  --cat-strategy: #7c8bd0; /* H250 indigo  */
+  --cat-family:   #5fa98c; /* H160 green   */
+  --cat-party:    #d98a52; /* H25  orange  */
+  --cat-coop:     #5f97c0; /* H200 blue    */
+  --cat-abstract: #c074b8; /* H300 magenta */
+  --cat-legacy:   #cf6f97; /* H340 rose    */
+  --cat-other:    #8189a6; /* H230 slate   */
+
+  /* ── Member avatar hues ── */
+  --m-watson: #7c8bd0;  --m-tres: #5fa98c;  --m-perry: #52b3d9;  --m-dk: #611792;
+  --m-joyce: #cf6f97;   --m-kim: #c9a84e;   --m-kyle: #ac1a1a;   --m-ian: #6fae72;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+[data-theme="dark"] {
+  --bg: #14161c;          /* app, background  */
+  --bg-2: #1a1d25;        /* sidebar, insets  */
+  --surface: #1f222b;     /* cards            */
+  --surface-2: #282d38;   /* chips, tracks    */
+  --border: #363b45;      /* borders          */
+  --border-soft: #2a2f39; /* subtle dividers  */
+  --text-1: #f1efe8;      /* headings         */
+  --text-2: #b2b6c0;      /* body             */
+  --text-3: #868c97;      /* muted/labels     */
+  /* accent, semantic, category & member hues are theme-independent */
 }
 
 body {
-  margin: 0;
+  font-family: var(--sans);
 }
 
-h1,
-h2 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
+code, pre {
   font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
 }
