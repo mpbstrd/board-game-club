@@ -48,7 +48,20 @@ export type TopVenues = {
     count: number
 }
 
+export type TopGames = {
+    rank: number,
+    name: string,
+    count: number
+}
+
+export type TopMembers = {
+    rank: number,
+    name: string,
+    count: number
+}
+
 export type MonthlySessionCount = {
     month: string,
     count: number
 }
+
