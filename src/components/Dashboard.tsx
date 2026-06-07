@@ -97,6 +97,9 @@ export default function Dashboard() {
                         <div>
                            <span className="[font-family:var(--heading)] font-medium text-[var(--text-1)] text-[20px] sm:text-[24px]">Where are we playing?</span>
                         </div>
+                        <div className='flex flex-1 items-center justify-center'>
+                            <span className='[font-family:var(--mono)] text-[var(--text-2)] text-[60px]'>WORK IN PROGRESS</span>
+                        </div>
                     </div>
                 </div>
 
