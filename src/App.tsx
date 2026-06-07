@@ -28,7 +28,7 @@ function App() {
           >
             <Menu size={22} />
           </button>
-          <span className="[font-family:var(--heading)] text-lg font-medium text-[var(--text-1)] ml-2">Friday</span>
+          <span className="[font-family:var(--heading)] text-lg font-medium text-[var(--text-1)] mt-1 ml-2">Friday Board Games Club</span>
         </header>
 
         <div className="flex items-start">
