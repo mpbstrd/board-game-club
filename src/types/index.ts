@@ -39,3 +39,29 @@ export interface Game {
   id: number;
   name: string;
 }
+
+// Session Types
+
+export type TopVenues = {
+    rank: number,
+    name: string,
+    count: number
+}
+
+export type TopGames = {
+    rank: number,
+    name: string,
+    count: number
+}
+
+export type TopMembers = {
+    rank: number,
+    name: string,
+    count: number
+}
+
+export type MonthlySessionCount = {
+    month: string,
+    count: number
+}
+

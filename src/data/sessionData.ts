@@ -1,4 +1,10 @@
-import { type Session } from '../types/index.ts'
+export interface Session {
+  sessionNo: number;
+  date: Date;
+  players: number[];
+  games: number[];
+  location: number[];
+}
 
 export const sessions: Session[] = [
   {
@@ -6,7 +12,7 @@ export const sessions: Session[] = [
     date: new Date("2026-01-22"),
     players: [3, 4, 1, 6],
     games: [12, 99],
-    location: [11],
+    location: [12, 7],
   },
   {
     sessionNo: 2,
@@ -76,14 +82,14 @@ export const sessions: Session[] = [
     date: new Date("2026-03-27"),
     players: [3, 4, 1, 2, 5],
     games: [95, 10, 38],
-    location: [14],
+    location: [15],
   },
   {
     sessionNo: 12,
     date: new Date("2026-03-28"),
     players: [3, 4, 5],
     games: [89],
-    location: [14],
+    location: [15],
   },
   {
     sessionNo: 13,
@@ -97,7 +103,7 @@ export const sessions: Session[] = [
     date: new Date("2026-04-03"),
     players: [3, 4, 1, 5],
     games: [84, 85, 16, 89, 63, 73],
-    location: [14],
+    location: [15],
   },
   {
     sessionNo: 15,
@@ -118,35 +124,35 @@ export const sessions: Session[] = [
     date: new Date("2026-04-08"),
     players: [3, 4, 1, 2, 5],
     games: [37, 24, 3, 68],
-    location: [14],
+    location: [15],
   },
   {
     sessionNo: 18,
     date: new Date("2026-04-10"),
     players: [3, 4, 1, 2, 5, 6],
     games: [94, 103, 89, 3],
-    location: [10],
+    location: [11],
   },
   {
     sessionNo: 19,
     date: new Date("2026-04-11"),
     players: [4, 1, 5],
     games: [3, 103],
-    location: [10],
+    location: [11],
   },
   {
     sessionNo: 20,
     date: new Date("2026-04-15"),
     players: [3, 4, 1],
     games: [76, 72],
-    location: [8],
+    location: [9],
   },
   {
     sessionNo: 21,
     date: new Date("2026-04-18"),
     players: [1, 2, 3, 4, 5, 6, 7, 8],
     games: [94, 89, 95, 77, 90, 24],
-    location: [10],
+    location: [11],
   },
   {
     sessionNo: 22,
@@ -160,7 +166,7 @@ export const sessions: Session[] = [
     date: new Date("2026-04-25"),
     players: [3, 1, 4, 2],
     games: [101, 39, 33, 15, 48, 14, 41, 46, 88, 17, 13],
-    location: [14],
+    location: [15],
   },
   {
     sessionNo: 24,
@@ -188,7 +194,7 @@ export const sessions: Session[] = [
     date: new Date("2026-05-08"),
     players: [3, 4, 1, 2, 5, 6],
     games: [16, 50, 30, 51, 48, 71, 19, 13, 104, 12],
-    location: [7],
+    location: [8],
   },
   {
     sessionNo: 28,
@@ -202,21 +208,21 @@ export const sessions: Session[] = [
     date: new Date("2026-05-13"),
     players: [3, 2, 5],
     games: [60, 101, 3, 5],
-    location: [9],
+    location: [10],
   },
   {
     sessionNo: 30,
     date: new Date("2026-05-14"),
     players: [3, 4, 1, 2, 5],
     games: [49, 98, 55, 4, 25, 53, 7],
-    location: [9],
+    location: [10],
   },
   {
     sessionNo: 31,
     date: new Date("2026-05-15"),
     players: [3, 4, 1, 2, 5],
     games: [21, 32, 103, 39, 81],
-    location: [12],
+    location: [13],
   },
   {
     sessionNo: 32,
@@ -230,7 +236,7 @@ export const sessions: Session[] = [
     date: new Date("2026-05-21"),
     players: [3, 4, 1, 5],
     games: [27, 55, 67],
-    location: [8],
+    location: [9],
   },
   {
     sessionNo: 34,
@@ -244,7 +250,7 @@ export const sessions: Session[] = [
     date: new Date("2026-05-22"),
     players: [4, 1, 2, 5],
     games: [21, 104, 39],
-    location: [12],
+    location: [13],
   },
   {
     sessionNo: 36,
@@ -258,7 +264,7 @@ export const sessions: Session[] = [
     date: new Date("2026-05-30"),
     players: [4, 1, 2],
     games: [9, 93, 59, 31, 35, 54, 102],
-    location: [13],
+    location: [14],
   },
   {
     sessionNo: 38,
@@ -272,13 +278,13 @@ export const sessions: Session[] = [
     date: new Date("2026-06-04"),
     players: [3, 4, 1, 5, 7],
     games: [57, 65, 5, 56, 70],
-    location: [8],
+    location: [9],
   },
   {
     sessionNo: 40,
     date: new Date("2026-06-05"),
     players: [3, 4, 1, 2, 5],
     games: [47, 23, 57, 65, 73, 17, 2, 56],
-    location: [14, 4],
+    location: [15, 4],
   },
 ];
