@@ -1,8 +1,22 @@
 import { useAppContext } from '../context/AppContext'
 import { ScheduleIcon, VenueIcon, PlayerCountIcon } from '../assets/icons'
+import { useState } from 'react'
+import { RadioGroup } from '@headlessui/react'
 
 export default function Dashboard() {
     const { upcomingEvent } = useAppContext()
+
+    const venues = [
+        { id: 'alice', name: 'Alice’s House' },
+        { id: 'bob', name: 'Bob’s House' },
+        { id: 'charlie', name: 'Charlie’s House' },
+    ]
+
+    var totalVotes = upcomingEvent.going.length + upcomingEvent.maybe.length + upcomingEvent.cant.length
+    var dateToday = new Date()
+    var dateTodayFormatted = dateToday.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+    var upcomingEventDate = upcomingEvent.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+    var upcomingEventWeekdate = upcomingEvent.date.toLocaleDateString('en-US', { weekday: 'long' }).toLocaleUpperCase()
 
     return(
         <div className="flex flex-col w-full min-h-screen p-4 sm:p-6 lg:p-10">
@@ -10,7 +24,7 @@ export default function Dashboard() {
             {/* Header */}
             <div className="flex flex-col gap-1 p-4 sm:p-5 w-full">
                 <span className="[font-family:var(--mono)] text-[var(--text-3)] text-[11px]">
-                    THIS {upcomingEvent.date.toLocaleDateString('en-US', { weekday: 'long' }).toLocaleUpperCase()} · June 6, 2026
+                    THIS {upcomingEventWeekdate} · {dateTodayFormatted}
                 </span>
                 <div className="flex flex-col sm:flex-row sm:items-center w-full gap-3 sm:gap-5">
                     <span className="[font-family:var(--heading)] font-medium text-2xl md:text-[34px] lg:text-[40px] leading-tight">
@@ -40,7 +54,7 @@ export default function Dashboard() {
                         <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-y-2 relative z-10">
                             <div className="flex items-center">
                                 <ScheduleIcon size={18} className="text-[var(--accent)] shrink-0" />
-                                <span className="ml-2 text-[var(--text-1)] text-sm sm:text-base sm:mr-4">{upcomingEvent.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} · {upcomingEvent.time}</span>
+                                <span className="ml-2 text-[var(--text-1)] text-sm sm:text-base sm:mr-4">{upcomingEventDate} · {upcomingEvent.time}</span>
                             </div>
                             <div className="flex items-center">
                                 <VenueIcon size={18} className="text-[var(--accent)] shrink-0" />
@@ -59,7 +73,15 @@ export default function Dashboard() {
 
                     {/* Voting */}
                     <div className="flex flex-col p-5 sm:p-7 bg-[var(--surface)] border border-[var(--border)] rounded-[18px] min-h-[200px] lg:min-h-[500px]">
-                        Voting and recommendations
+                        <div className="flex flex-row justify-between">
+                           <span className="[font-family:var(--mono)] text-[var(--text-3)] text-[12px] sm:text-[16px]">LIVE VOTE</span> 
+                           <span className="[font-family:var(--mono)] text-[var(--text-3)] text-[12px] sm:text-[16px]">{totalVotes} votes</span> 
+                        </div>
+                        <div>
+                           <span className="[font-family:var(--heading)] font-medium text-[var(--text-1)] text-[20px] sm:text-[24px]">Where are we playing?</span> 
+                        </div>
+                        <div></div>
+                        <div></div>
                     </div>
                 </div>
 
