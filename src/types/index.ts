@@ -1,8 +1,5 @@
 export type CurrentUser = {
-    name: string,
-    sessionsPlayed: number,
-    playedGames: number,
-    avatarUrl: string
+    id: number
 }
 
 export type UpcomingEvent = {
@@ -12,14 +9,33 @@ export type UpcomingEvent = {
     venue: string,
     mainGame: string,
     mainGameImageUrl: string,
-    going: Member[],
-    maybe: Member[],
-    cant: Member[],
+    going: number[],
+    maybe: number[],
+    cant: number[],
 }
 
 export type Member = {
+    id: number,
     name: string,
     sessionsPlayed: number,
     playedGames: number,
     avatarUrl: string
+}
+
+export interface Session {
+  sessionNo: number;
+  date: Date;
+  players: number[];
+  games: number[];
+  location: number[];
+}
+
+export interface Location {
+  id: number;
+  name: string;
+}
+
+export interface Game {
+  id: number;
+  name: string;
 }
