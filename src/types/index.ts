@@ -22,6 +22,20 @@ export type Member = {
     avatarUrl: string
 }
 
-export type Venue = {
+export interface Session {
+  sessionNo: number;
+  date: Date;
+  players: number[];
+  games: number[];
+  location: number[];
+}
 
+export interface Location {
+  id: number;
+  name: string;
+}
+
+export interface Game {
+  id: number;
+  name: string;
 }
