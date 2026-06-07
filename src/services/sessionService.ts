@@ -3,8 +3,6 @@ import { locations } from '../data/locationsData'
 import { sessions } from '../data/sessionData'
 import { members } from '../data/memberData'
 import { type TopVenues, type MonthlySessionCount, type TopGames, type TopMembers } from '../types'
-import type { Member } from '../types'
-
 
 export function getTotalSessions() {
     return members.reduce((sum, m) => sum + m.sessionsPlayed, 0)
