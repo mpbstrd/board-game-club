@@ -2,7 +2,6 @@ import { HomeIcon, LibraryIcon, CollectionIcon, LeaderboardIcon, SessionsIcon, S
 import { NavLink } from 'react-router-dom'
 import { useAppContext } from '../context/AppContext'
 import { X } from 'lucide-react'
-import { currentUser } from '../data/mockData'
 
 type NavItem = {
     to: string,

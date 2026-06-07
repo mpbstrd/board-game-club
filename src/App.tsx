@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Navigation } from './components/Navigation'
 import { currentUser, upcomingEvent, members } from './data/mockData'
@@ -14,10 +14,24 @@ import './App.css'
 
 function App() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const [event, setEvent] = useState(upcomingEvent)
   const currentMember = members.find(m => m.id === currentUser.id)!
 
+  const setRsvp = useCallback((status: 'going' | 'maybe' | 'cant') => {
+    setEvent(prev => {
+      const id = currentUser.id
+      const without = (arr: number[]) => arr.filter(x => x !== id)
+      return {
+        ...prev,
+        going: status === 'going' ? [...without(prev.going), id] : without(prev.going),
+        maybe: status === 'maybe' ? [...without(prev.maybe), id] : without(prev.maybe),
+        cant:  status === 'cant'  ? [...without(prev.cant),  id] : without(prev.cant),
+      }
+    })
+  }, [])
+
   return (
-    <AppContext.Provider value={{ currentUser, currentMember, upcomingEvent, members }}>
+    <AppContext.Provider value={{ currentUser, currentMember, upcomingEvent: event, members, setRsvp }}>
       <div className="bg-[var(--bg)] overflow-x-hidden">
 
         {/* Mobile top bar */}

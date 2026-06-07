@@ -6,6 +6,7 @@ type AppContextType = {
     currentMember: Member
     upcomingEvent: UpcomingEvent
     members: Member[]
+    setRsvp: (status: 'going' | 'maybe' | 'cant') => void
 }
 
 const AppContext = createContext<AppContextType | null>(null)
