@@ -1,16 +1,16 @@
 import { useAppContext } from '../context/AppContext'
 import { ScheduleIcon, VenueIcon, PlayerCountIcon } from '../assets/icons'
-import { useState } from 'react'
-import { RadioGroup } from '@headlessui/react'
+// import { useState } from 'react'
+// import { RadioGroup } from '@headlessui/react'
 
 export default function Dashboard() {
     const { upcomingEvent } = useAppContext()
 
-    const venues = [
-        { id: 'alice', name: 'Alice’s House' },
-        { id: 'bob', name: 'Bob’s House' },
-        { id: 'charlie', name: 'Charlie’s House' },
-    ]
+    // const venues = [
+    //     { id: 'alice', name: 'Alice’s House' },
+    //     { id: 'bob', name: 'Bob’s House' },
+    //     { id: 'charlie', name: 'Charlie’s House' },
+    // ]
 
     var totalVotes = upcomingEvent.going.length + upcomingEvent.maybe.length + upcomingEvent.cant.length
     var dateToday = new Date()
