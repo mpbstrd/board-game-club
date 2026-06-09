@@ -13,48 +13,48 @@ export const members: Member[] = [
         name: 'DK',
         sessionsPlayed: 20,
         playedGames: 60,
-        avatarUrl: 'https://i.pravatar.cc/3'
+        avatarUrl: 'https://i.pravatar.cc/301'
     },
     {
         id: 3,
         name: 'Watson',
         sessionsPlayed: 31,
         playedGames: 180,
-        avatarUrl: 'https://i.pravatar.cc/6'
+        avatarUrl: 'https://i.pravatar.cc/302'
     },
     {
         id: 4,
         name: 'Tres',
         sessionsPlayed: 32,
         playedGames: 189,
-        avatarUrl: 'https://i.pravatar.cc/53'
+        avatarUrl: 'https://i.pravatar.cc/303'
     },
     {
         id: 5,
         name: 'Joyce',
         sessionsPlayed: 25,
         playedGames: 79,
-        avatarUrl: 'https://i.pravatar.cc/35'
+        avatarUrl: 'https://i.pravatar.cc/304'
     },
     {
         id: 6,
         name: 'Ian',
         sessionsPlayed: 10,
         playedGames: 42,
-        avatarUrl: 'https://i.pravatar.cc/61'
+        avatarUrl: 'https://i.pravatar.cc/305'
     },
     {
         id: 7,
         name: 'Kim',
         sessionsPlayed: 4,
         playedGames: 20,
-        avatarUrl: 'https://i.pravatar.cc/22'
+        avatarUrl: 'https://i.pravatar.cc/306'
     },
     {
         id: 8,
         name: 'Kyle',
         sessionsPlayed: 3,
         playedGames: 15,
-        avatarUrl: 'https://i.pravatar.cc/32'
+        avatarUrl: 'https://i.pravatar.cc/307'
     }
 ];
