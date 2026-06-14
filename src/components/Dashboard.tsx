@@ -69,7 +69,7 @@ export default function Dashboard() {
 
 
                     {/* Voting */}
-                    <VotingCard totalVotes={totalVotes}/>
+                    <VotingCard totalRsvps={totalVotes}/>
                 </div>
 
                 {/* Who's coming */}
