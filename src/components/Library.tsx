@@ -1,7 +1,6 @@
 import { getUniqueGamesCount } from '../services/sessionService'
 import { useState } from 'react'
 import { games } from '../data/gamesData'
-import { type Game } from '../types'
 
 const totalGames = getUniqueGamesCount()
 
