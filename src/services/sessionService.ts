@@ -4,9 +4,25 @@ import { sessions } from '../data/sessionData'
 import { members } from '../data/memberData'
 import { type TopVenues, type MonthlySessionCount, type TopGames, type TopMembers } from '../types'
 
-export function getTotalSessions() {
-    return members.reduce((sum, m) => sum + m.sessionsPlayed, 0)
+export function getFirstAndLatestSession(): [Date, Date]{
+    const firstSession: Date = sessions[0].date
+    const lastSession: Date = sessions[sessions.length - 1].date
+    return [firstSession, lastSession];
 }
+
+
+export function getTotalSessions() {
+    return sessions.length
+}
+
+export function getTotalGamesPlayed(){
+    // return sessions.reduce((sum, m) => sum + m.games, 0)
+}
+
+export function getUniqueGamesCount() {
+    return games.length
+} 
+
 
 export function getSessionsPerMonth(): MonthlySessionCount[] {
     const counts: Record<string, number> = {}
@@ -52,7 +68,6 @@ export function getMostPlayedGames(maxGames: number): TopGames[]{
         }))
 }
 
-
 export function getMembersAttendanceRanking(): TopMembers[]{
     const count: Record<number, number> = {}
     for(const session of sessions){
@@ -69,3 +84,5 @@ export function getMembersAttendanceRanking(): TopMembers[]{
             count
         }))
 }
+
+

@@ -1,10 +1,4 @@
-export interface Session {
-  sessionNo: number;
-  date: Date;
-  players: number[];
-  games: number[];
-  location: number[];
-}
+import type { Session } from '../types/index'
 
 export const sessions: Session[] = [
   {

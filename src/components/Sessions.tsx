@@ -1,47 +1,44 @@
-import { getMembersAttendanceRanking, getMostPlayedGames, getSessionsPerMonth, getTopVenues, getTotalSessions } from "../services/sessionService"
-import { type TopVenues, type TopGames, type MonthlySessionCount, type TopMembers } from '../types'
+import { getFirstAndLatestSession } from "../services/sessionService"
+import { GroupDataCard } from './sessions/GroupData'
+import { SessionsPerMonthCard } from './sessions/SessionsPerMonth'
+import { SessionHistoryCard } from './sessions/SessionHistory'
+import { TopMembersCard } from "./sessions/TopMembers"
+import { TopGamesCard } from "./sessions/TopGames"
+import { TopVenuesCard } from "./sessions/TopVenues"
 
-const totalSessions = getTotalSessions()
-const topVenues: TopVenues[] = getTopVenues(5) 
-const topGames: TopGames[] = getMostPlayedGames(5)
-const monthlySessionCount: MonthlySessionCount[] = getSessionsPerMonth()
-const topMembers: TopMembers[] = getMembersAttendanceRanking()
+const firstAndLastSession: [Date, Date] = getFirstAndLatestSession()
+const firstSession: string = firstAndLastSession[0].toLocaleString('en-US', {month: 'short', year: 'numeric'})
+const lastSession: string = firstAndLastSession[1].toLocaleString('en-US', {month: 'short', year: 'numeric'})
 
 export default function Sessions() {
     return(
-        <div>
-            Sessions
+        <div className="flex flex-col w-[1200px] min-h-screen p-4 sm:p-6 lg:p-10 mx-auto">
 
-            <br></br>
-            <div>
-                Total Sessions: {totalSessions}
+            <div className="flex flex-col gap-1 p-4 sm:p-5 w-full">
+                <div className="[font-family:var(--mono)] text-[var(--text-3)] text-[11px] uppercase">
+                    {firstSession} - {lastSession}
+                </div>
+                <div className="flex flex-col sm:flex-row sm:items-center w-full gap-3 sm:gap-5">
+                    <span className="[font-family:var(--heading)] font-medium text-2xl md:text-[34px] lg:text-[40px] leading-tight">Sessions Played</span>
+                </div>
             </div>
+            
+            <GroupDataCard />
             <br></br>
-            <div>
-            {monthlySessionCount.map((item) => (
-                <div key={item.month}>
-                    {item.month} — {item.count}
-                </div>
-            ))}
-            </div>
+
+            <SessionsPerMonthCard />
             <br></br>
-            {topVenues.map((venue) => (
-                <div key={venue.rank}>
-                    {venue.rank}. {venue.name} — {venue.count} sessions
-                </div>
-            ))}
+            
+            <TopVenuesCard />
             <br></br>
-            {topGames.map((game) => (
-                <div key={game.rank}>
-                    {game.rank}. {game.name} — {game.count} sessions
-                </div>
-            ))}
+
+            <TopGamesCard />
             <br></br>
-            {topMembers.map((member) => (
-                <div key={member.rank}>
-                    {member.rank}. {member.name} — {member.count} sessions
-                </div>
-            ))}
+            
+            <TopMembersCard />
+            <br></br>
+            
+            <SessionHistoryCard />
         </div>
     )
 }
