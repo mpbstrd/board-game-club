@@ -8,11 +8,15 @@ const totalGames = getUniqueGamesCount()
 type GameCardProps = {
     id: number
     name: string
+    imgUrl?: string
 }
 
-function GameCard({id, name} : GameCardProps){
+function GameCard({id, name, imgUrl} : GameCardProps){
     return (
-        <div key={id}>
+        <div key={id} className='flex-1 bg-[var(--surface)] min-w-[335px] h-[362px] border border-[var(--border)] rounded-[16px]'>
+            <div className='h-[160px]'>
+                <img src={imgUrl} alt={name} className='h-full w-full object-cover object-top border border-[var(--border)] rounded-[16px]'></img>
+            </div>
             {name}
         </div>
     )
@@ -44,13 +48,14 @@ export default function Library() {
 
             </div>
 
-            <div>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
             {
                 filteredGames.map((game) => {
                     return (
                         <GameCard 
                             id={game.id} 
-                            name={game.name} 
+                            name={game.name}
+                            imgUrl={game.imgUrl}
                         />
                     )
                 })
