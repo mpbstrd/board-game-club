@@ -1,10 +1,22 @@
 import { getUniqueGamesCount } from '../services/sessionService'
 import { useState } from 'react'
 import { games } from '../data/gamesData'
+import { type Game } from '../types'
 
 const totalGames = getUniqueGamesCount()
 
+type GameCardProps = {
+    id: number
+    name: string
+}
 
+function GameCard({id, name} : GameCardProps){
+    return (
+        <div key={id}>
+            {name}
+        </div>
+    )
+}
 
 export default function Library() {
     const [query, setQuery] = useState("")
@@ -13,7 +25,7 @@ export default function Library() {
 )
 
     return(
-        <div className="flex flex-col w-[1200px] min-h-screen p-4 sm:p-6 lg:p-10 mx-auto">
+        <div className="flex flex-col max-w-[1200px] min-h-screen p-4 sm:p-6 lg:p-10 mx-auto">
 
             <div className="flex flex-col gap-1 p-4 sm:p-5 w-full">
                 <div className="[font-family:var(--mono)] text-[var(--text-3)] text-[11px] uppercase">
@@ -27,16 +39,24 @@ export default function Library() {
                 </div>
             </div>
 
+            {/* Filters */}
+            <div>
+
+            </div>
+
+            <div>
             {
                 filteredGames.map((game) => {
                     return (
-                        <div>
-                            {game.id} - {game.name}
-                        </div>
+                        <GameCard 
+                            id={game.id} 
+                            name={game.name} 
+                        />
                     )
-                }
-            )
+                })
             }
+            </div>
+            
         </div>
     )
 }

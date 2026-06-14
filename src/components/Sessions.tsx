@@ -12,7 +12,7 @@ const lastSession: string = firstAndLastSession[1].toLocaleString('en-US', {mont
 
 export default function Sessions() {
     return(
-        <div className="flex flex-col w-[1200px] min-h-screen p-4 sm:p-6 lg:p-10 mx-auto">
+        <div className="flex flex-col max-w-[1200px] min-h-screen p-4 sm:p-6 lg:p-10 mx-auto">
 
             <div className="flex flex-col gap-1 p-4 sm:p-5 w-full">
                 <div className="[font-family:var(--mono)] text-[var(--text-3)] text-[11px] uppercase">
