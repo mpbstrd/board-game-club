@@ -64,4 +64,3 @@ export type MonthlySessionCount = {
     month: string,
     count: number
 }
-
