@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
-import { UpcomingEventCard } from './dashboard/upcomingEvent'
+import { UpcomingEventCard } from './dashboard/UpcomingEvent'
 import { AttendanceCard } from './dashboard/Attendance'
 import { VotingCard } from './dashboard/Voting'
 
@@ -38,7 +38,7 @@ export default function Dashboard() {
     }
 
     return(
-        <div className="flex flex-col w-[1200px] mx-auto min-h-screen p-4 sm:p-6 lg:p-10">
+        <div className="flex flex-col max-w-[1200px] mx-auto min-h-screen p-4 sm:p-6 lg:p-10">
 
             {/* Header */}
             <div className="flex flex-col gap-1 p-4 sm:p-5 w-full">
