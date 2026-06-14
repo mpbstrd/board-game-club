@@ -1,8 +1,12 @@
+import type { UpcomingEvent } from "../../types"
+
 type Props = {
-    totalRsvps: number
+    event: UpcomingEvent
 }
 
-export function VotingCard({totalRsvps} : Props){
+export function VotingCard({event} : Props){
+    const totalRsvps = event.going.length + event.maybe.length + event.cant.length
+
     return(
         <div className="flex flex-col p-5 sm:p-7 bg-[var(--surface)] border border-[var(--border)] rounded-[18px] min-h-[200px] lg:min-h-[500px]">
             <div className="flex flex-row justify-between">

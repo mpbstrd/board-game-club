@@ -1,10 +1,26 @@
 import { getUniqueGamesCount } from '../services/sessionService'
 import { useState } from 'react'
 import { games } from '../data/gamesData'
+import { type Game } from '../types'
 
 const totalGames = getUniqueGamesCount()
 
+type GameCardProps = {
+    id: number
+    name: string
+    imgUrl?: string
+}
 
+function GameCard({id, name, imgUrl} : GameCardProps){
+    return (
+        <div key={id} className='flex-1 bg-[var(--surface)] min-w-[335px] h-[362px] border border-[var(--border)] rounded-[16px]'>
+            <div className='h-[160px]'>
+                <img src={imgUrl} alt={name} className='h-full w-full object-cover object-top border border-[var(--border)] rounded-[16px]'></img>
+            </div>
+            {name}
+        </div>
+    )
+}
 
 export default function Library() {
     const [query, setQuery] = useState("")
@@ -13,7 +29,7 @@ export default function Library() {
 )
 
     return(
-        <div className="flex flex-col w-[1200px] min-h-screen p-4 sm:p-6 lg:p-10 mx-auto">
+        <div className="flex flex-col max-w-[1200px] min-h-screen p-4 sm:p-6 lg:p-10 mx-auto">
 
             <div className="flex flex-col gap-1 p-4 sm:p-5 w-full">
                 <div className="[font-family:var(--mono)] text-[var(--text-3)] text-[11px] uppercase">
@@ -27,16 +43,25 @@ export default function Library() {
                 </div>
             </div>
 
+            {/* Filters */}
+            <div>
+
+            </div>
+
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
             {
                 filteredGames.map((game) => {
                     return (
-                        <div>
-                            {game.id} - {game.name}
-                        </div>
+                        <GameCard 
+                            id={game.id} 
+                            name={game.name}
+                            imgUrl={game.imgUrl}
+                        />
                     )
-                }
-            )
+                })
             }
+            </div>
+            
         </div>
     )
 }

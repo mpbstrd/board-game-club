@@ -40,7 +40,7 @@ export const games: Game[] = [
   { id: 36, name: "Halo halo" },
   { id: 37, name: "Harmonies" },
   { id: 38, name: "Harvest" },
-  { id: 39, name: "Hegemony" },
+  { id: 39, name: "Hegemony", imgUrl: "https://cf.geekdo-images.com/DCLgJlrvB-EqL6A3WgQLMQ__imagepage/img/TPrT8nP5BQ-wEEiknfXh0a9b0PE=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5715770.jpg" },
   { id: 40, name: "Herd Mentality" },
   { id: 41, name: "Hues and Cues" },
   { id: 42, name: "Illusion" },
@@ -104,6 +104,6 @@ export const games: Game[] = [
   { id: 100, name: "Tropichaos" },
   { id: 101, name: "Turing Machine" },
   { id: 102, name: "Unmatched: Stars and Stripes" },
-  { id: 103, name: "Wingspan" },
+  { id: 103, name: "Wingspan", imgUrl: 'https://cf.geekdo-images.com/yLZJCVLlIx4c7eJEWUNJ7w__imagepage/img/uIjeoKgHMcRtzRSR4MoUYl3nXxs=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4458123.jpg' },
   { id: 104, name: "Wondrous Creatures" },
 ];

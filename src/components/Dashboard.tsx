@@ -3,17 +3,21 @@ import { useAppContext } from '../context/AppContext'
 import { UpcomingEventCard } from './dashboard/UpcomingEvent'
 import { AttendanceCard } from './dashboard/Attendance'
 import { VotingCard } from './dashboard/Voting'
+import { games } from '../data/gamesData'
 
 type RSVPStatus = 'going' | 'maybe' | 'cant'
 
 export default function Dashboard() {
     const { currentUser, upcomingEvent } = useAppContext()
-    const [event, setEvent] = useState(upcomingEvent)
+    const defaultGame = games.find(g => g.id === 39)
+    const [event, setEvent] = useState({
+        ...upcomingEvent,
+        mainGame: defaultGame?.name,
+        mainGameImageUrl: defaultGame?.imgUrl
+    })
 
-    const totalVotes = event.going.length + event.maybe.length + event.cant.length
     const dateToday = new Date()
     const dateTodayFormatted = dateToday.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
-    const upcomingEventDate = event.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
     const upcomingEventWeekdate = event.date.toLocaleDateString('en-US', { weekday: 'long' }).toLocaleUpperCase()
 
     const userStatus: RSVPStatus | null =
@@ -65,11 +69,11 @@ export default function Dashboard() {
                 <div className="flex-1 flex flex-col min-w-0 w-full">
 
                     {/* Upcoming event */}
-                    <UpcomingEventCard event={event} formattedDate={upcomingEventDate} />
+                    <UpcomingEventCard event={event} />
 
 
                     {/* Voting */}
-                    <VotingCard totalRsvps={totalVotes}/>
+                    <VotingCard event={event}/>
                 </div>
 
                 {/* Who's coming */}
