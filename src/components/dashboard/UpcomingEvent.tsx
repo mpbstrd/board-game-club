@@ -3,10 +3,11 @@ import type { UpcomingEvent as UpcomingEventType } from '../../types'
 
 type Props = {
     event: UpcomingEventType
-    formattedDate: string
 }
 
-export function UpcomingEventCard({ event, formattedDate }: Props) {
+export function UpcomingEventCard({ event }: Props) {
+    const upcomingEventDate = event.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+
     return(
         <div className="relative flex flex-col p-5 sm:p-7 mb-5 bg-[var(--surface)] border border-[var(--border)] rounded-[18px] overflow-hidden min-h-[150px] sm:min-h-[170px]">
             <img
@@ -17,7 +18,7 @@ export function UpcomingEventCard({ event, formattedDate }: Props) {
             <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-y-2 relative z-10">
                 <div className="flex items-center">
                     <ScheduleIcon size={18} className="text-[var(--accent)] shrink-0" />
-                    <span className="ml-2 text-[var(--text-1)] text-sm sm:text-base sm:mr-4">{formattedDate} · {event.time}</span>
+                    <span className="ml-2 text-[var(--text-1)] text-sm sm:text-base sm:mr-4">{upcomingEventDate} · {event.time}</span>
                 </div>
                 <div className="flex items-center">
                     <VenueIcon size={18} className="text-[var(--accent)] shrink-0" />

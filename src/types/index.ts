@@ -7,8 +7,8 @@ export type UpcomingEvent = {
     date: Date,
     time: string,
     venue: string,
-    mainGame: string,
-    mainGameImageUrl: string,
+    mainGame?: string,
+    mainGameImageUrl?: string,
     going: number[],
     maybe: number[],
     cant: number[],
@@ -38,6 +38,8 @@ export interface Location {
 export interface Game {
   id: number;
   name: string;
+  category?: string;
+  imgUrl?: string;
 }
 
 // Session Types
