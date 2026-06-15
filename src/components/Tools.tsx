@@ -12,6 +12,13 @@ function AddGameToLibrary() {
     )
 }
 
+function Button({text, method} : {text: string; method: () => void}){
+    return(
+        <button className="className={`px-3 sm:px-4 py-2 sm:py-2.5 text-center text-sm font-medium transition-colors cursor-pointer bg-white text-[var(--text-2)] hover:text-[var(--accent)] rounded-lg border border-[var(--border)] `" 
+                            onClick={method}>{text}</button>
+    )
+}
+
 export default function Tools() {
     // const [event, setEvent] = useState("")
     return(
@@ -29,14 +36,12 @@ export default function Tools() {
             <div>
                 <div className="flex flex-row gap-3 mx-5 mb-5 items-center">
                     <span className="text-[18px]">Sync game data from BGG: </span>
-                    <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--accent)] text-white text-sm font-medium hover:opacity-90 transition-opacity cursor-pointer" 
-                            onClick={() => SynchronizeData()}>Synchronize</button>
+                    <Button text="Synchronize" method={SynchronizeData} />
                 </div>
                 
                 <div className="flex flex-row gap-3 mx-5 items-center">
                     <span className="text-[18px]">Add a game to the current library: </span>
-                    <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--accent)] text-white text-sm font-medium hover:opacity-90 transition-opacity cursor-pointer" 
-                            onClick={() => AddGameToLibrary()}>Add</button>
+                    <Button text="Add" method={AddGameToLibrary} />
                 </div>
             </div>
             

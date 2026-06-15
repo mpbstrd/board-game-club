@@ -10,6 +10,12 @@ const firstAndLastSession: [Date, Date] = getFirstAndLatestSession()
 const firstSession: string = firstAndLastSession[0].toLocaleString('en-US', {month: 'short', year: 'numeric'})
 const lastSession: string = firstAndLastSession[1].toLocaleString('en-US', {month: 'short', year: 'numeric'})
 
+function AddSession() {
+    return (
+        alert('Add new session')
+    )
+}
+
 export default function Sessions() {
     return(
         <div className="flex flex-col max-w-[1200px] min-h-screen p-4 sm:p-6 lg:p-10 mx-auto">
@@ -20,6 +26,9 @@ export default function Sessions() {
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center w-full gap-3 sm:gap-5">
                     <span className="[font-family:var(--heading)] font-medium text-2xl md:text-[34px] lg:text-[40px] leading-tight">Sessions Played</span>
+                    <div className="sm:ml-auto flex overflow-hidden rounded-lg border border-[var(--border)] shadow-sm self-start shrink-0">
+                        <button type="button" onClick={() => AddSession()} className={`px-3 sm:px-4 py-2 sm:py-2.5 text-center text-sm font-medium transition-colors cursor-pointer bg-white text-[var(--text-2)] hover:text-[var(--accent)]`}>Add new session</button>
+                    </div>
                 </div>
             </div>
             
