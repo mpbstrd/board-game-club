@@ -1,6 +1,7 @@
 import { getUniqueGamesCount } from '../services/sessionService'
 import { useState } from 'react'
 import { games } from '../data/gamesData'
+import { Search } from 'lucide-react'
 
 const totalGames = getUniqueGamesCount()
 
@@ -34,10 +35,16 @@ export default function Library() {
                 <div className="[font-family:var(--mono)] text-[var(--text-3)] text-[11px] uppercase">
                     {totalGames} games on the shelf
                 </div>
-                <div className="flex flex-col sm:flex-row sm:items-center w-full gap-3 sm:gap-5">
+                <div className="flex flex-col justify-between sm:flex-row sm:items-center w-full gap-3 sm:gap-5">
                     <span className="[font-family:var(--heading)] font-medium text-2xl md:text-[34px] lg:text-[40px] leading-tight">The Library</span>
-                    <div>
-                        <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search games...'></input>
+                    <div className='flex flex-row gap-3 flex-start align-center vertical-align px-[14px] py-[10px] bg-[var(--surface)] border border-[var(--border)] rounded-[12px]'>
+                        <Search height={18} />
+                        <input 
+                            type="text" 
+                            value={query} 
+                            onChange={(e) => setQuery(e.target.value)} 
+                            placeholder='Search games...'
+                            className='text-[16px]'></input>
                     </div>
                 </div>
             </div>
