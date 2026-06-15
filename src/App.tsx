@@ -10,6 +10,7 @@ import Collection from './components/Collection'
 import Leaderboard from './components/Leaderboard'
 import Sessions from './components/Sessions'
 import Schedule from './components/Schedule'
+import Tools from './components/Tools'
 import { Menu } from 'lucide-react'
 import './App.css'
 
@@ -33,7 +34,7 @@ function App() {
 
   return (
     <AppContext.Provider value={{ currentUser, currentMember, upcomingEvent: event, members, setRsvp }}>
-      <div className="bg-[var(--bg)] overflow-x-hidden">
+      <div className="bg-[var(--bg)]">
 
         {/* Mobile top bar */}
         <header className="lg:hidden sticky top-0 z-30 flex items-center h-14 px-4 bg-[var(--bg-2)] border-b border-[var(--border-soft)]">
@@ -59,7 +60,7 @@ function App() {
 
           <Navigation isOpen={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
 
-          <main className="flex-1 min-w-0">
+          <main className="flex-1 min-w-0 overflow-x-hidden">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/library" element={<Library />} />
@@ -67,6 +68,7 @@ function App() {
               <Route path="/leaderboard" element={<Leaderboard />} />
               <Route path="/sessions" element={<Sessions />} />
               <Route path="/schedule" element={<Schedule />} />
+              <Route path="/tools" element={<Tools />} />
             </Routes>
           </main>
 

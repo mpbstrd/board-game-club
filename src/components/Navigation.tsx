@@ -1,7 +1,7 @@
 import { HomeIcon, LibraryIcon, CollectionIcon, LeaderboardIcon, SessionsIcon, ScheduleIcon, BrandMarkIcon } from '../assets/icons'
 import { NavLink } from 'react-router-dom'
 import { useAppContext } from '../context/AppContext'
-import { X } from 'lucide-react'
+import { ToolCaseIcon, Wrench, X } from 'lucide-react'
 
 type NavItem = {
     to: string,
@@ -16,6 +16,7 @@ const navItems: NavItem[] = [
     { to: '/leaderboard', icon: LeaderboardIcon, label: 'Leaderboard' },
     { to: '/sessions', icon: SessionsIcon, label: 'Sessions' },
     { to: '/schedule', icon: ScheduleIcon, label: 'Schedule' },
+    { to: '/tools', icon: Wrench, label: 'Tools' },
 ]
 
 type NavigationProps = {
@@ -31,7 +32,7 @@ export function Navigation({ isOpen, onClose }: NavigationProps) {
         <nav className={`
             flex flex-col items-stretch w-[252px] shrink-0 h-screen p-4 overflow-y-auto
             fixed top-0 left-0 z-50
-            lg:sticky
+            lg:fixed
             bg-[var(--bg-2)] border-r border-[var(--border-soft)]
             transition-transform duration-300 ease-in-out
             ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
@@ -59,18 +60,21 @@ export function Navigation({ isOpen, onClose }: NavigationProps) {
 
             {/* Nav items */}
             <ul className="list-none p-0 mx-2">
-                {navItems.map((item) => (
-                    <li key={item.to} className="mb-1 last:mb-0">
-                        <NavLink to={item.to} onClick={onClose}>
-                            {({ isActive }) => (
-                                <span className={`flex items-center w-full h-11 no-underline px-0.5 rounded-lg transition-colors ${isActive ? 'bg-[var(--streak)]/16 text-[var(--text-1)]' : 'text-[var(--text-3)] hover:bg-white hover:text-[var(--text-1)]'}`}>
-                                    <item.icon className={`w-5 h-5 m-3 shrink-0 ${isActive ? 'text-[var(--accent)]' : ''}`} />
-                                    {item.label}
-                                </span>
-                            )}
-                        </NavLink>
-                    </li>
-                ))}
+                {navItems.map((item) => {
+                    if (item.to === '/tools' && currentMember.isAdmin !== true) return null
+                    return (
+                        <li key={item.to} className="mb-1 last:mb-0">
+                            <NavLink to={item.to} onClick={onClose}>
+                                {({ isActive }) => (
+                                    <span className={`flex items-center w-full h-11 no-underline px-0.5 rounded-lg transition-colors ${isActive ? 'bg-[var(--streak)]/16 text-[var(--text-1)]' : 'text-[var(--text-3)] hover:bg-white hover:text-[var(--text-1)]'}`}>
+                                        <item.icon className={`w-5 h-5 m-3 shrink-0 ${isActive ? 'text-[var(--accent)]' : ''}`} />
+                                        {item.label}
+                                    </span>
+                                )}
+                            </NavLink>
+                        </li>
+                    )
+                })}
             </ul>
 
             {/* Upcoming */}
