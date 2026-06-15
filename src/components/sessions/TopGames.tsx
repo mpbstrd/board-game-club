@@ -1,7 +1,7 @@
 import { getMostPlayedGames } from "../../services/sessionService"
-import { type TopGames } from "../../types"
+import { type TopProperty } from "../../types"
 
-const topGames: TopGames[] = getMostPlayedGames(5)
+const topGames: TopProperty[] = getMostPlayedGames(5)
 
 
 

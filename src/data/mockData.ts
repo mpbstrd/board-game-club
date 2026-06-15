@@ -2,7 +2,6 @@ import type { CurrentUser, UpcomingEvent } from '../types/index'
 
 export const currentUser: CurrentUser = {
     id: 1,
-    
 }
 
 export const upcomingEvent: UpcomingEvent = {
