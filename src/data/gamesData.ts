@@ -2,7 +2,7 @@ import { type Game } from '../types/index.ts'
 
 
 export const games: Game[] = [
-  { id: 1, name: "#inconversible" },
+  { id: 1, name: "#inconversible", isActive: false },
   { id: 2, name: "A Place For All My Books" },
   { id: 3, name: "Azul" },
   { id: 4, name: "Azul: Stained Glass of Sintra" },
