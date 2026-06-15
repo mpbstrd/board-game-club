@@ -52,19 +52,7 @@ export interface Category {
 
 // Session Types
 
-export type TopVenues = {
-    rank: number
-    name: string
-    count: number
-}
-
-export type TopGames = {
-    rank: number
-    name: string
-    count: number
-}
-
-export type TopMembers = {
+export type TopProperty = {
     rank: number
     name: string
     count: number

@@ -1,7 +1,7 @@
 import { getTopVenues } from "../../services/sessionService"
-import { type TopVenues } from "../../types"
+import { type TopProperty } from "../../types"
 
-const topVenues: TopVenues[] = getTopVenues(5) 
+const topVenues: TopProperty[] = getTopVenues(5) 
 
 export function TopVenuesCard() {
     return (

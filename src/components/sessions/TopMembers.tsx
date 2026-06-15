@@ -1,7 +1,7 @@
 import { getMembersAttendanceRanking } from "../../services/sessionService"
-import { type TopMembers } from "../../types"
+import { type TopProperty } from "../../types"
 
-const topMembers: TopMembers[] = getMembersAttendanceRanking()
+const topMembers: TopProperty[] = getMembersAttendanceRanking()
 
 export function TopMembersCard(){
     return (
