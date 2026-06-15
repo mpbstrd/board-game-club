@@ -1,8 +1,19 @@
-import { use, useState } from "react"
+import { useState } from "react"
 
+function SynchronizeData() {
+    return (
+        alert('Hi')
+    )
+}
+
+function AddGameToLibrary() {
+    return (
+        alert('Add a game')
+    )
+}
 
 export default function Tools() {
-    const [event, setEvent] = useState("")
+    // const [event, setEvent] = useState("")
     return(
         <div className="flex flex-col max-w-[1200px] min-h-screen p-4 sm:p-6 lg:p-10 mx-auto">
 
@@ -14,11 +25,21 @@ export default function Tools() {
                     <span className="[font-family:var(--heading)] font-medium text-2xl md:text-[34px] lg:text-[40px] leading-tight">Admin Tools</span>
                 </div>
             </div>
-
-            <div className="flex flex-row">
-                <span>Sync game data from BGG: </span>
-                <button className="">Synchronize</button>
+            
+            <div>
+                <div className="flex flex-row gap-3 mx-5 mb-5 items-center">
+                    <span className="text-[18px]">Sync game data from BGG: </span>
+                    <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--accent)] text-white text-sm font-medium hover:opacity-90 transition-opacity cursor-pointer" 
+                            onClick={() => SynchronizeData()}>Synchronize</button>
+                </div>
+                
+                <div className="flex flex-row gap-3 mx-5 items-center">
+                    <span className="text-[18px]">Add a game to the current library: </span>
+                    <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--accent)] text-white text-sm font-medium hover:opacity-90 transition-opacity cursor-pointer" 
+                            onClick={() => AddGameToLibrary()}>Add</button>
+                </div>
             </div>
+            
         </div>
     )
 }

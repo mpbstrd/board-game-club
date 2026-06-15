@@ -1,7 +1,7 @@
 import { HomeIcon, LibraryIcon, CollectionIcon, LeaderboardIcon, SessionsIcon, ScheduleIcon, BrandMarkIcon } from '../assets/icons'
 import { NavLink } from 'react-router-dom'
 import { useAppContext } from '../context/AppContext'
-import { ToolCaseIcon, Wrench, X } from 'lucide-react'
+import { Wrench, X } from 'lucide-react'
 
 type NavItem = {
     to: string,
