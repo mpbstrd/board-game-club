@@ -25,8 +25,8 @@ function GameCard({id, name, imgUrl} : GameCardProps){
 export default function Library() {
     const [query, setQuery] = useState("")
     const filteredGames = games.filter((item) => 
-    item.name.toLowerCase().includes(query.toLowerCase())
-)
+        item.name.toLowerCase().includes(query.toLowerCase())
+    )
 
     return(
         <div className="flex flex-col max-w-[1200px] min-h-screen p-4 sm:p-6 lg:p-10 mx-auto">
