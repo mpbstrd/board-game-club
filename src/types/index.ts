@@ -39,9 +39,15 @@ export type Location = {
 export type Game = {
     id: number
     name: string
-    category?: string
+    description: string
     imgUrl?: string
-    categories?: Category[]
+    categories?: number[]
+    weight?: number
+    minPlayers: number
+    maxPlayers: number
+    minDuration: number
+    maxDuration: number
+    rating?: number
     isActive?: boolean
 }
 
