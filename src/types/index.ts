@@ -23,28 +23,28 @@ export type Member = {
     isAdmin: boolean
 }
 
-export interface Session {
-  sessionNo: number
-  date: Date
-  players: number[]
-  games: number[]
-  location: number[]
+export type Session = {
+    sessionNo: number
+    date: Date
+    players: number[]
+    games: number[]
+    location: number[]
 }
 
-export interface Location {
-  id: number
-  name: string
+export type Location = {
+    id: number
+    name: string
 }
 
-export interface Game {
-  id: number
-  name: string
-  category?: string
-  imgUrl?: string
-  categories?: Category[]
+export type Game = {
+    id: number
+    name: string
+    category?: string
+    imgUrl?: string
+    categories?: Category[]
 }
 
-export interface Category {
+export type Category = {
     id: number
     name: string
     color?: string
