@@ -2,7 +2,7 @@ import { games } from '../data/gamesData'
 import { locations } from '../data/locationsData'
 import { sessions } from '../data/sessionData'
 import { members } from '../data/memberData'
-import { type TopVenues, type MonthlySessionCount, type TopGames, type TopMembers } from '../types'
+import { type TopProperty, type MonthlySessionCount} from '../types'
 
 export function getFirstAndLatestSession(): [Date, Date]{
     const firstSession: Date = sessions[0].date
@@ -33,7 +33,7 @@ export function getSessionsPerMonth(): MonthlySessionCount[] {
     return Object.entries(counts).map(([month, count]) => ({ month, count }))
 }
 
-export function getTopVenues(maxVenues: number): TopVenues[]{
+export function getTopVenues(maxVenues: number): TopProperty[]{
     const counts: Record<number, number> = {}
     for(const session of sessions){
         for(const location of session.location){
@@ -50,7 +50,7 @@ export function getTopVenues(maxVenues: number): TopVenues[]{
         }))
 }
 
-export function getMostPlayedGames(maxGames: number): TopGames[]{
+export function getMostPlayedGames(maxGames: number): TopProperty[]{
     const count: Record<number, number> = {}
     for(const session of sessions){
         for(const game of session.games){
@@ -68,7 +68,7 @@ export function getMostPlayedGames(maxGames: number): TopGames[]{
         }))
 }
 
-export function getMembersAttendanceRanking(): TopMembers[]{
+export function getMembersAttendanceRanking(): TopProperty[]{
     const count: Record<number, number> = {}
     for(const session of sessions){
         for(const player of session.players){

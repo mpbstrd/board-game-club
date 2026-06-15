@@ -42,6 +42,7 @@ export type Game = {
     category?: string
     imgUrl?: string
     categories?: Category[]
+    isActive?: boolean
 }
 
 export type Category = {
