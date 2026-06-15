@@ -1,5 +1,5 @@
 import { HomeIcon, LibraryIcon, CollectionIcon, LeaderboardIcon, SessionsIcon, ScheduleIcon, BrandMarkIcon } from '../assets/icons'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useAppContext } from '../context/AppContext'
 import { Wrench, X } from 'lucide-react'
 
@@ -10,7 +10,7 @@ type NavItem = {
 }
 
 const navItems: NavItem[] = [
-    { to: '/', icon: HomeIcon, label: 'Home' },
+    { to: '/dashboard', icon: HomeIcon, label: 'Home' },
     { to: '/library', icon: LibraryIcon, label: 'Library' },
     { to: '/collection', icon: CollectionIcon, label: 'Collection' },
     { to: '/leaderboard', icon: LeaderboardIcon, label: 'Leaderboard' },
@@ -48,6 +48,7 @@ export function Navigation({ isOpen, onClose }: NavigationProps) {
             </button>
 
             {/* Brand */}
+            <Link to="/">
             <div className="flex items-center gap-3 pt-3 lg:pt-5 pr-[30px] pb-[14px] pl-[10px]">
                 <div className="w-10 h-10 rounded-[10px] bg-[var(--accent)] flex items-center justify-center shrink-0">
                     <BrandMarkIcon size={22} />
@@ -57,6 +58,7 @@ export function Navigation({ isOpen, onClose }: NavigationProps) {
                     <span className="[font-family:var(--mono)] text-[10px] tracking-[0.12em] uppercase text-[var(--text-3)] leading-none">Board Games Club</span>
                 </div>
             </div>
+            </Link>
 
             {/* Nav items */}
             <ul className="list-none p-0 mx-2">

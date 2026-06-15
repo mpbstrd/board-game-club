@@ -1,10 +1,13 @@
 import { useState, useCallback } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Outlet } from 'react-router-dom'
+import { useOutlet, useLocation } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Navigation } from './components/Navigation'
 import { members } from './data/memberData'
 import { currentUser, upcomingEvent } from './data/mockData'
 import AppContext from './context/AppContext'
 import Dashboard from './components/Dashboard'
+import Landing from './components/Landing'
 import Library from './components/Library'
 import Collection from './components/Collection'
 import Leaderboard from './components/Leaderboard'
@@ -12,9 +15,11 @@ import Sessions from './components/Sessions'
 import Schedule from './components/Schedule'
 import Tools from './components/Tools'
 import { Menu } from 'lucide-react'
+import { useReducedMotion } from 'framer-motion'
 import './App.css'
 
-function App() {
+
+function AppShell(){
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [event, setEvent] = useState(upcomingEvent)
   const currentMember = members.find(m => m.id === currentUser.id)!
@@ -32,11 +37,14 @@ function App() {
     })
   }, [])
 
+  const location = useLocation()
+  const outlet = useOutlet()
+  const reduce = useReducedMotion()
+
   return (
     <AppContext.Provider value={{ currentUser, currentMember, upcomingEvent: event, members, setRsvp }}>
-      <div className="bg-[var(--bg)]">
-
-        {/* Mobile top bar */}
+      <div className='bg-[var(--bg)]'>
+         {/* Mobile top bar */}
         <header className="lg:hidden sticky top-0 z-30 flex items-center h-14 px-4 bg-[var(--bg-2)] border-b border-[var(--border-soft)]">
           <button
             onClick={() => setMobileNavOpen(true)}
@@ -48,33 +56,48 @@ function App() {
           <span className="[font-family:var(--heading)] text-lg font-medium text-[var(--text-1)] mt-1 ml-2">Friday Board Games Club</span>
         </header>
 
-        <div className="flex items-start">
-
-          {/* Backdrop */}
+        <div className='flex items-start'>
           {mobileNavOpen && (
             <div
               className="lg:hidden fixed inset-0 z-40 bg-black/40"
               onClick={() => setMobileNavOpen(false)}
             />
           )}
-
           <Navigation isOpen={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
-
           <main className="flex-1 min-w-0 overflow-x-hidden">
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/library" element={<Library />} />
-              <Route path="/collection" element={<Collection />} />
-              <Route path="/leaderboard" element={<Leaderboard />} />
-              <Route path="/sessions" element={<Sessions />} />
-              <Route path="/schedule" element={<Schedule />} />
-              <Route path="/tools" element={<Tools />} />
-            </Routes>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={location.pathname}
+                initial={{ opacity: 0, y: reduce ? 0 : 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: reduce ? 0 : -8 }}
+                transition={{ duration: 0.15, ease: 'easeOut' }}
+              >
+                {outlet}
+              </motion.div>
+            </AnimatePresence>
           </main>
-
         </div>
       </div>
     </AppContext.Provider>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      {/* App pages — rendered under AppShell / AppContext */}
+      <Route element={<AppShell />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/library" element={<Library />} />
+        <Route path="/collection" element={<Collection />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/sessions" element={<Sessions />} />
+        <Route path="/schedule" element={<Schedule />} />
+        <Route path="/tools" element={<Tools />} />
+      </Route>
+    </Routes>
   )
 }
 
