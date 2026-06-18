@@ -1,7 +1,7 @@
 import { getUniqueGamesCount } from '../services/sessionService'
 import { useState } from 'react'
 import { games } from '../data/gamesData'
-import { Search, Dices, StarIcon, SkullIcon } from 'lucide-react'
+import { Search, Dices, StarIcon, SkullIcon, BookmarkIcon } from 'lucide-react'
 import { categories } from '../data/categoryData'
 
 const totalGames = getUniqueGamesCount()
@@ -18,12 +18,12 @@ type GameCardProps = {
 
 function GameCard({id, name, imgUrl, description, weight, rating, gameCategories} : GameCardProps){
     return (
-        <div key={id} className='flex-1 bg-[var(--surface)] min-w-[335px] h-[362px] border border-[var(--border)] rounded-[16px]'>
-            <div className='h-[160px]'>
+        <div key={id} className='flex flex-col bg-[var(--surface)] border border-[var(--border)] rounded-[16px] overflow-hidden'>
+            <div className='h-[160px] shrink-0'>
                 {imgUrl
-                    ? <img src={imgUrl} alt={name} className='h-full w-full object-cover object-top border border-[var(--border)] rounded-[16px]' />
+                    ? <img src={imgUrl} alt={name} className='h-full w-full object-cover object-top' />
                     : <div
-                        className='h-full w-full flex flex-col items-center justify-center gap-2 border border-[var(--border)] rounded-[16px]'
+                        className='h-full w-full flex flex-col items-center justify-center gap-2'
                         style={{
                             backgroundColor: 'var(--surface-2)',
                             backgroundImage: 'radial-gradient(circle, var(--border) 1px, transparent 1px)',
@@ -34,40 +34,42 @@ function GameCard({id, name, imgUrl, description, weight, rating, gameCategories
                         <span className='[font-family:var(--mono)] text-[var(--text-3)] text-[10px] uppercase tracking-widest'>No cover art</span>
                     </div>
                 }
-                
             </div>
-            <div className='flex flex-col pt-4 px-4 gap-1'>
-                <div className='flex flex-row flex-start justify-between'>
-                    <span className='[font-family:var(--heading)] t-[19px]'>{name}</span>
-                    <div className='flex flex-row flex-start gap-2 items-center text-center'>
-                        <div className='flex flex-row gap-1'>
-                            <StarIcon size={16} strokeWidth={3} color='var(--accent)' />
-                            <span>{rating !== null ? rating : "0.00"}</span>
-                        </div>
+
+            <div className='flex flex-col flex-1 pt-4 px-4 gap-2'>
+                <div className='flex flex-row justify-between items-start'>
+                    <span className='[font-family:var(--heading)] text-[19px]'>{name}</span>
+                    <div className='flex flex-row gap-1 items-center shrink-0 ml-2'>
+                        <StarIcon size={16} strokeWidth={3} color='var(--accent)' />
+                        <span className='text-sm'>{rating !== null ? rating : "0.00"}</span>
                     </div>
                 </div>
                 <div className='flex flex-row justify-between items-center'>
-                    <div className='flex-1'>
+                    <div className='flex flex-wrap gap-1 flex-1'>
                         {gameCategories?.map((category) => {
                             const cat = categories.find(c => c.id === category)
                             if (!cat) return null
                             return (
-                                <div className='bg-[var(--cat-strategy)]/25 inline-flex gap-1 py-1 px-2 mx-1 border border-[var(--cat-strategy)] rounded-[20px]'>
-                                    <span className='text-[11px] text-[var(--cat-strategy)] '>
-                                        {cat.name}
-                                    </span>
+                                <div key={category} className='bg-[var(--cat-strategy)]/25 inline-flex gap-1 py-1 px-2 border border-[var(--cat-strategy)] rounded-[20px]'>
+                                    <span className='text-[11px] text-[var(--cat-strategy)]'>{cat.name}</span>
                                 </div>
                             )
                         })}
                     </div>
-                    <div className='flex flex-row gap-1 items-center'>
+                    <div className='flex flex-row gap-1 items-center shrink-0 ml-2'>
                         <SkullIcon size={16} strokeWidth={3} color='var(--accent)' />
-                        <span>{weight !== null ? weight : "0.00"}</span>
+                        <span className='text-sm'>{weight !== null ? weight : "0.00"}</span>
                     </div>
                 </div>
-                <div>{description?.split(/(?<=[.])\s/)[0]}</div>
+                <p className='text-sm text-[var(--text-3)] line-clamp-3'>{description?.split(/(?<=[.])\s/)[0]}</p>
             </div>
-            
+
+            <div className='p-4 pt-3'>
+                <button className='w-full flex items-center justify-center gap-2 py-2.5 rounded-[10px] border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-2)] text-sm tracking-widest hover:bg-[var(--accent)]/10 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors cursor-pointer'>
+                    <BookmarkIcon size={15} strokeWidth={2} />
+                    Reserve this game
+                </button>
+            </div>
         </div>
     )
 }
