@@ -33,20 +33,14 @@ export default function Sessions() {
             </div>
             
             <GroupDataCard />
-            <br></br>
 
-            <SessionsPerMonthCard />
-            <br></br>
-            
-            <TopVenuesCard />
-            <br></br>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 sm:p-5">
+                <SessionsPerMonthCard />
+                <TopVenuesCard />
+                <TopGamesCard />
+                <TopMembersCard />
+            </div>
 
-            <TopGamesCard />
-            <br></br>
-            
-            <TopMembersCard />
-            <br></br>
-            
             <SessionHistoryCard />
         </div>
     )
