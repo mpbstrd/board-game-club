@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { Routes, Route, Outlet } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { useOutlet, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Navigation } from './components/Navigation'
@@ -87,7 +87,6 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
-      {/* App pages — rendered under AppShell / AppContext */}
       <Route element={<AppShell />}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/library" element={<Library />} />
