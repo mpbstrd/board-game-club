@@ -29,17 +29,25 @@ export default function Landing() {
         <main className="flex-1 flex items-center justify-center px-6">
             <div className="max-w-2xl text-center -mt-10">
             <span className="inline-block mb-5 px-3 py-1 rounded-full text-xs tracking-wide uppercase bg-[var(--surface)] text-[var(--text-3)] border border-[var(--border-soft)]">
-                Every Friday · {members.length} members
+                Every week · {members.length} members
             </span>
 
             <h1 className="[font-family:var(--heading)] text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-[var(--text-1)]">
-                Roll dice with friends,<br /> not strangers.
+                Friday Board Game Club
             </h1>
 
             <p className="mt-5 text-base sm:text-lg text-[var(--text-3)] leading-relaxed max-w-xl mx-auto">
-                Track your collection, schedule game nights, climb the leaderboard, and never
-                argue about whose turn it is to host again.
+                A club management system
             </p>
+
+            <div className='mt-8 flex items-center justify-center'>
+                <div>Who are you? </div>
+                <select>
+                    <option>Watson</option>
+                    <option>DK</option>
+                    <option>Perry</option>
+                </select>
+            </div>
 
             <div className="mt-8 flex items-center justify-center">
                 <Link
@@ -54,7 +62,7 @@ export default function Landing() {
         </main>
 
         <footer className="py-6 text-center text-xs text-[var(--text-3)]">
-            Friday Board Games Club
+            Developed by Matthew Bustarde · 2026
         </footer>
         </div>
     </motion.div>
